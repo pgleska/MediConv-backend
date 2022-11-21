@@ -1,0 +1,41 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    hostname: mediconv-db
+    container_name: mediconv-db
+    volumes:
+      - ./docker/db/mediconv.sql:/docker-entrypoint-initdb.d/mediconv.sql:ro
+      - ./docker/db/dump/:/opt/dump/
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysecretpassword
+      - MYSQL_DATABASE=mediconv
+      - MYSQL_ADMIN=admin
+      - MYSQL_USER=mediconv
+      - MYSQL_PASSWORD=mysecretpassword 
+    networks:
+      - mediconv
+#    ports:
+#     - 3306:3306
+
+  backend:
+    build: ./docker/backend
+    restart: always
+    hostname: mediconv-backend
+    container_name: mediconv-backend
+    volumes:
+      - ./docker/backend/MediConv.jar:/opt/mediconv/MediConv.jar:ro
+    ports:
+      - 8001:8001
+      - 8080:8080  
+      - 8019:8001
+    depends_on:
+      - db
+    environment:    
+      - JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8001
+    networks:
+      - mediconv 
+   
+networks:
+  mediconv:
