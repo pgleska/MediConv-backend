@@ -5,21 +5,16 @@ import java.time.LocalDateTime;
 import com.github.pgleska.MediConv.entities.Message;
 
 public class MessageDTO {
-	
 	private Integer id;
-	
 	private LocalDateTime timestamp;
-	
 	private Integer authorId;
-	
 	private Integer receiverId;
-	
+	private String authorName;
+	private String receiverName;
 	private String content;
-	
 	private String sharedKeyEncryptedWithAuthorPKey;
-	
 	private String sharedKeyEncryptedWithReceiverPKey;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -47,7 +42,23 @@ public class MessageDTO {
 	public Integer getReceiverId() {
 		return receiverId;
 	}
-	
+
+	public String getAuthorName() {
+		return authorName;
+	}
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+
+	public String getReceiverName() {
+		return receiverName;
+	}
+
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
+	}
+
 	public void setReceiverId(Integer receiverId) {
 		this.receiverId = receiverId;
 	}
