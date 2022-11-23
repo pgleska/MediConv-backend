@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.github.pgleska.MediConv.entities.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,11 @@ public class UserController {
 		}
 		UserDTO result = userService.registerNewUser(userDTO);
 		return new ResponseEntity<>(ResponseDTO.generateCreatedBody(result), HttpStatus.CREATED);
+	}
+
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ResponseDTO<UserDTO>> getRequester(Principal principal) {
+		return new ResponseEntity<>(ResponseDTO.generateSuccessBody(userService.getUser(principal.getName())), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/search")
