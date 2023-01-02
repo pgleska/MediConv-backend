@@ -10,7 +10,7 @@ CREATE TABLE `application_users` (
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,    
   `role` varchar(255) NOT NULL,
-  `user_public_key` varchar(255), 
+  `user_public_key` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 

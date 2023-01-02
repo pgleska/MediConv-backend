@@ -28,8 +28,8 @@ public class MessageController {
 	}
 	
 	@PostMapping(value = "/send", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ResponseDTO<?>> sendMessage(@RequestBody MessageDTO messageDTO) {
-		MessageDTO m = messageService.saveMessage(messageDTO);
+	public ResponseEntity<ResponseDTO<?>> sendMessage(@RequestBody MessageDTO messageDTO, Principal principal) {
+		MessageDTO m = messageService.saveMessage(messageDTO, principal.getName());
 		return new ResponseEntity<>(ResponseDTO.generateCreatedBody(m), HttpStatus.CREATED);
 	}
 	

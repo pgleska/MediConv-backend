@@ -33,7 +33,11 @@ public class UserService {
 		User user = userDAO.save(UserDTO.convertToEntity(userDTO, passwordEncoder));
 		return UserDTO.convertToDTO(user);
 	}
-	
+
+	public UserDTO getUser(String email) {
+		return UserDTO.convertToDTO(userDAO.findByEmail(email).get());
+	}
+
 	public List<UserDTO> searchFoUsers(String requesterEmail, String seq) {
 		User user = userDAO.findByEmail(requesterEmail).get();
 		Role role = user.getRole();

@@ -23,7 +23,9 @@ public class MessageService {
 		this.userDAO = userDAO;
 	}
 	
-	public MessageDTO saveMessage(MessageDTO messageDTO) {
+	public MessageDTO saveMessage(MessageDTO messageDTO, String requesterEmail) {
+		User user = userDAO.findByEmail(requesterEmail).get();
+		messageDTO.setAuthorId(user.getId());
 		return MessageDTO.convertToDTO(messageDAO.save(MessageDTO.convertToEntity(messageDTO)));
 	}
 	
@@ -36,6 +38,15 @@ public class MessageService {
 		return messageDAO.findAllByAuthorIdInAndReceiverIdInOrderByTimestampDesc(authorsId, receiversId)
 				.stream()
 				.map(m -> MessageDTO.convertToDTO(m))
+				.peek(m -> {
+					if(m.getAuthorId() == user.getId()) {
+						m.setAuthorName(user.getName());
+						m.setReceiverName(otherUser.getName());
+					} else {
+						m.setAuthorName(otherUser.getName());
+						m.setReceiverName(user.getName());
+					}
+				})
 				.collect(Collectors.toList());
 	}
 }
