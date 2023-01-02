@@ -6,6 +6,7 @@ public class PrivateKeyStorageDTO {
 	private Integer id;
 	private Integer userId;
 	private String privateKey;
+	private String salt;
 	
 	public Integer getId() {
 		return id;
@@ -31,11 +32,20 @@ public class PrivateKeyStorageDTO {
 		this.privateKey = privateKey;
 	}
 	
-	public static PrivateKeyStorageDTO convertToDTO(PrivateKeyStorage privateKeyStorage) {
+	public String getSalt() {
+		return salt;
+	}
+	
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	
+	public static PrivateKeyStorageDTO convertToDTO(PrivateKeyStorage entity) {
 		PrivateKeyStorageDTO dto = new PrivateKeyStorageDTO();
-		dto.setId(privateKeyStorage.getId());
-		dto.setUserId(privateKeyStorage.getUserId());
-		dto.setPrivateKey(privateKeyStorage.getPrivateKey());
+		dto.setId(entity.getId());
+		dto.setUserId(entity.getUserId());
+		dto.setPrivateKey(entity.getPrivateKey());
+		dto.setSalt(entity.getSalt());
 		return dto;
 	}
 	
@@ -43,6 +53,7 @@ public class PrivateKeyStorageDTO {
 		PrivateKeyStorage entity = new PrivateKeyStorage();
 		entity.setUserId(dto.getUserId());
 		entity.setPrivateKey(dto.getPrivateKey());
+		entity.setSalt(dto.getSalt());
 		return entity;
 	}
 }

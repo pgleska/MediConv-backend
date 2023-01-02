@@ -22,6 +22,9 @@ public class PrivateKeyStorage {
 	@Column(name = "private_key", nullable = false)
 	private String privateKey;
 	
+	@Column(name = "salt", nullable = false)
+	private String salt;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -44,5 +47,13 @@ public class PrivateKeyStorage {
 	
 	public void setPrivateKey(String privateKey) {
 		this.privateKey = privateKey;
+	}
+	
+	public String getSalt() {
+		return salt;
+	}
+	
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 }

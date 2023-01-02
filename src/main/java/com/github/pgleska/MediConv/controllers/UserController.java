@@ -32,7 +32,7 @@ public class UserController {
 	}
 	
 	@PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ResponseDTO<UserDTO>> createAccount(@Valid @RequestBody UserDTO userDTO, BindingResult bindingResult) {
+	public ResponseEntity<ResponseDTO<UserDTO>> createAccount(@Valid @RequestBody UserDTO userDTO, BindingResult bindingResult) {		
 		if(bindingResult.hasErrors()) {
 			return new ResponseEntity<>(ResponseDTO.generateErrorBody(HttpStatus.UNPROCESSABLE_ENTITY, "invalid.input"), HttpStatus.UNPROCESSABLE_ENTITY);
 		}

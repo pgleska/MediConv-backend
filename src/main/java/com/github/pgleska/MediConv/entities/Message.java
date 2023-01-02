@@ -30,11 +30,11 @@ public class Message {
 	@Column(name = "content", nullable = false)
 	private String content;
 	
-	@Column(name = "shared_key_by_author_pkey", nullable = false)
-	private String sharedKeyEncryptedWithAuthorPKey;
+	@Column(name = "author_secret_key", nullable = false)
+	private String authorSecretKey;
 	
-	@Column(name = "shared_key_by_receiver_pkey", nullable = false)
-	private String sharedKeyEncryptedWithReceiverPKey;
+	@Column(name = "receiver_secret_key", nullable = false)
+	private String receiverSecretKey;
 	
 	
 	public Integer getId() {
@@ -85,23 +85,23 @@ public class Message {
 	}
 
 
-	public String getSharedKeyEncryptedWithAuthorPKey() {
-		return sharedKeyEncryptedWithAuthorPKey;
+	public String getAuthorSecretKey() {
+		return authorSecretKey;
 	}
 
 
-	public void setSharedKeyEncryptedWithAuthorPKey(String sharedKeyEncryptedWithAuthorPKey) {
-		this.sharedKeyEncryptedWithAuthorPKey = sharedKeyEncryptedWithAuthorPKey;
+	public void setAuthorSecretKey(String sharedKeyEncryptedWithAuthorPKey) {
+		this.authorSecretKey = sharedKeyEncryptedWithAuthorPKey;
 	}
 
 
-	public String getSharedKeyEncryptedWithReceiverPKey() {
-		return sharedKeyEncryptedWithReceiverPKey;
+	public String getReceiverSecretKey() {
+		return receiverSecretKey;
 	}
 
 
-	public void setSharedKeyEncryptedWithReceiverPKey(String sharedKeyEncryptedWithReceiverPKey) {
-		this.sharedKeyEncryptedWithReceiverPKey = sharedKeyEncryptedWithReceiverPKey;
+	public void setReceiverSecretKey(String sharedKeyEncryptedWithReceiverPKey) {
+		this.receiverSecretKey = sharedKeyEncryptedWithReceiverPKey;
 	}	
 	
 }

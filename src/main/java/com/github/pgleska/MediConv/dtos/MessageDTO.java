@@ -16,9 +16,9 @@ public class MessageDTO {
 	
 	private String content;
 	
-	private String sharedKeyEncryptedWithAuthorPKey;
+	private String authorSecretKey;
 	
-	private String sharedKeyEncryptedWithReceiverPKey;
+	private String receiverSecretKey;
 	
 	public Integer getId() {
 		return id;
@@ -60,20 +60,20 @@ public class MessageDTO {
 		this.content = content;
 	}
 	
-	public String getSharedKeyEncryptedWithAuthorPKey() {
-		return sharedKeyEncryptedWithAuthorPKey;
+	public String getAuthorSecretKey() {
+		return authorSecretKey;
 	}
 	
-	public void setSharedKeyEncryptedWithAuthorPKey(String sharedKeyEncryptedWithAuthorPKey) {
-		this.sharedKeyEncryptedWithAuthorPKey = sharedKeyEncryptedWithAuthorPKey;
+	public void setAuthorSecretKey(String sharedKeyEncryptedWithAuthorPKey) {
+		this.authorSecretKey = sharedKeyEncryptedWithAuthorPKey;
 	}
 	
-	public String getSharedKeyEncryptedWithReceiverPKey() {
-		return sharedKeyEncryptedWithReceiverPKey;
+	public String getReceiverSecretKey() {
+		return receiverSecretKey;
 	}
 	
-	public void setSharedKeyEncryptedWithReceiverPKey(String sharedKeyEncryptedWithReceiverPKey) {
-		this.sharedKeyEncryptedWithReceiverPKey = sharedKeyEncryptedWithReceiverPKey;
+	public void setReceiverSecretKey(String sharedKeyEncryptedWithReceiverPKey) {
+		this.receiverSecretKey = sharedKeyEncryptedWithReceiverPKey;
 	}
 
 	public static MessageDTO convertToDTO(Message message) {
@@ -82,8 +82,8 @@ public class MessageDTO {
 		messageDTO.setAuthorId(message.getAuthorId());
 		messageDTO.setReceiverId(message.getReceiverId());
 		messageDTO.setContent(message.getContent());
-		messageDTO.setSharedKeyEncryptedWithAuthorPKey(message.getSharedKeyEncryptedWithAuthorPKey());
-		messageDTO.setSharedKeyEncryptedWithReceiverPKey(message.getSharedKeyEncryptedWithReceiverPKey());
+		messageDTO.setAuthorSecretKey(message.getAuthorSecretKey());
+		messageDTO.setReceiverSecretKey(message.getReceiverSecretKey());
 		messageDTO.setTimestamp(message.getTimestamp());
 		return messageDTO;
 	}
@@ -94,8 +94,8 @@ public class MessageDTO {
 		message.setAuthorId(messageDTO.getAuthorId());
 		message.setReceiverId(messageDTO.getReceiverId());
 		message.setContent(messageDTO.getContent());
-		message.setSharedKeyEncryptedWithAuthorPKey(messageDTO.getSharedKeyEncryptedWithAuthorPKey());
-		message.setSharedKeyEncryptedWithReceiverPKey(messageDTO.getSharedKeyEncryptedWithReceiverPKey());
+		message.setAuthorSecretKey(messageDTO.getAuthorSecretKey());
+		message.setReceiverSecretKey(messageDTO.getReceiverSecretKey());
 		message.setTimestamp(LocalDateTime.now());
 		return message;
 	}

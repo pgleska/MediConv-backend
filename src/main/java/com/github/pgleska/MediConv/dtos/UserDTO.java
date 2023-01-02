@@ -6,10 +6,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.github.pgleska.MediConv.entities.Role;
 import com.github.pgleska.MediConv.entities.User;
+import com.github.pgleska.MediConv.validation.ValidEmail;
+import com.github.pgleska.MediConv.validation.ValidPassword;
 
 public class UserDTO {
 	private Integer id;
+	
+	@ValidEmail
 	private String email;
+	
+	@ValidPassword
 	private String password;
 	
 	@NotBlank
