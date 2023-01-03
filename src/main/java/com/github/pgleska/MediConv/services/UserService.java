@@ -39,7 +39,7 @@ public class UserService {
 	}
 
 	public List<UserDTO> searchForUsers(String requesterName, String seq) {
-		User user = userDAO.findByName(requesterName).get();
+		User user = userDAO.findByEmail(requesterName).get();
 		Role role = user.getRole();
 		List<UserDTO> users = new ArrayList<>();
 		
@@ -68,5 +68,11 @@ public class UserService {
 		User user = userDAO.findByEmail(requesterEmail).get();
 		dto.setUserId(user.getId());
 		return PrivateKeyStorageDTO.convertToDTO(privateKeyStorageDAO.save(PrivateKeyStorageDTO.convertToEntity(dto)));		
+	}
+	
+	public UserDTO updateUser(UserDTO dto, String requesterEmail) {
+		User user = userDAO.findByEmail(requesterEmail).get();
+		user.setName(dto.getName());		
+		return UserDTO.convertToDTO(user);
 	}
 }

@@ -5,12 +5,12 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.github.pgleska.MediConv.entities.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,5 +69,11 @@ public class UserController {
 	public ResponseEntity<ResponseDTO<PrivateKeyStorageDTO>> setPrivateKey(@RequestBody PrivateKeyStorageDTO dto, Principal principal) {		
 		PrivateKeyStorageDTO result = userService.setPrivateKey(dto, principal.getName());
 		return new ResponseEntity<>(ResponseDTO.generateCreatedBody(result), HttpStatus.CREATED);
+	}
+	
+	@PatchMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ResponseDTO<UserDTO>> updateName(@RequestBody UserDTO dto, Principal principal) {				
+		UserDTO result = userService.updateUser(dto, principal.getName());
+		return new ResponseEntity<>(ResponseDTO.generateSuccessBody(result), HttpStatus.OK);
 	}
 }

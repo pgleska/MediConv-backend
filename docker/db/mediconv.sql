@@ -21,8 +21,8 @@ CREATE TABLE `messages` (
   `author_id` int NOT NULL,
   `receiver_id` int NOT NULL,
   `content` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,    
-  `author_secret_key` varchar(255) NOT NULL,
-  `receiver_secret_key` varchar(255) NOT NULL, 
+  `author_secret_key` text NOT NULL,
+  `receiver_secret_key` text NOT NULL, 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
@@ -30,7 +30,7 @@ DROP TABLE IF EXISTS `private_keys`;
 CREATE TABLE `private_keys` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL UNIQUE,
-  `private_key` varchar(255) NOT NULL,
+  `private_key` text NOT NULL,
   `salt` varchar(255) NOT NULL,  
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
