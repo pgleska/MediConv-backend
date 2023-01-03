@@ -38,8 +38,8 @@ public class UserService {
 		return UserDTO.convertToDTO(userDAO.findByEmail(email).get());
 	}
 
-	public List<UserDTO> searchFoUsers(String requesterEmail, String seq) {
-		User user = userDAO.findByEmail(requesterEmail).get();
+	public List<UserDTO> searchForUsers(String requesterName, String seq) {
+		User user = userDAO.findByName(requesterName).get();
 		Role role = user.getRole();
 		List<UserDTO> users = new ArrayList<>();
 		

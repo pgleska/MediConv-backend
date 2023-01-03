@@ -48,8 +48,8 @@ public class UserController {
 	
 	@GetMapping(value = "/search")
 	public ResponseEntity<ResponseDTO<List<UserDTO>>> searchForUser(@RequestParam(value = "seq", required = false) String sequence, Principal principal) {
-		String requesterEmail = principal.getName();		
-		List<UserDTO> users = userService.searchFoUsers(requesterEmail, sequence);
+		String requesterName = principal.getName();		
+		List<UserDTO> users = userService.searchForUsers(requesterName, sequence);
 		return new ResponseEntity<>(ResponseDTO.generateSuccessBody(users), HttpStatus.OK);
 	}
 	

@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "7260375c-fa36-4666-899b-f6860689213b",
+		"name": "MediConv",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8494825"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"tesla\",\n    \"password\" : \"Test123?\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"tesla@localhost\",\n    \"password\" : \"Test123?\",\n    \"name\" : \"tesla\",\n    \"role\" : \"USER\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendMessage",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlaW5zdGVpbiIsInJvbGVzIjpbIkFETUlOIiwiVVNFUiJdfQ.B-e1GqTyh21WNEgedwaXC42snJeDSowkjy_Jnpn3A6y2tnN2-23LJnhg0Q5odu7CuP1gG4_lUf-7tnxmjiFikA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"authorId\" : \"1\",\n    \"receiverId\" : \"2\",\n    \"content\" : \"Albert Einstein mistrzem jest\",\n    \"sharedKeyEncryptedWithAuthorPKey\" : \"demo\",\n    \"sharedKeyEncryptedWithReceiverPKey\" : \"USER\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/message/send",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"message",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setPublicKey",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXNsYSIsInJvbGVzIjpbIlVTRVIiXX0.SrmDzKKX4moyg0MhAEzwZINQB3vJHu71iFysv1XcpbATEXldjd_MHmeoqcx1ax9b069vrhm_ZJx8c014fRKLyw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"publicKey\" : \"xxx\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/publicKey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"publicKey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setPrivateKey",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXNsYSIsInJvbGVzIjpbIlVTRVIiXX0.SrmDzKKX4moyg0MhAEzwZINQB3vJHu71iFysv1XcpbATEXldjd_MHmeoqcx1ax9b069vrhm_ZJx8c014fRKLyw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"privateKey\" : \"yyy\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/privateKey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"privateKey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPrivateKey",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXNsYSIsInJvbGVzIjpbIlVTRVIiXX0.SrmDzKKX4moyg0MhAEzwZINQB3vJHu71iFysv1XcpbATEXldjd_MHmeoqcx1ax9b069vrhm_ZJx8c014fRKLyw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/user/privateKey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"privateKey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchForUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXNsYSIsInJvbGVzIjpbIlVTRVIiXX0.SrmDzKKX4moyg0MhAEzwZINQB3vJHu71iFysv1XcpbATEXldjd_MHmeoqcx1ax9b069vrhm_ZJx8c014fRKLyw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/user/search?seq=ein",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"search"
+					],
+					"query": [
+						{
+							"key": "seq",
+							"value": "ein"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "downloadMessages",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlaW5zdGVpbiIsInJvbGVzIjpbIkFETUlOIiwiVVNFUiJdfQ.B-e1GqTyh21WNEgedwaXC42snJeDSowkjy_Jnpn3A6y2tnN2-23LJnhg0Q5odu7CuP1gG4_lUf-7tnxmjiFikA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/message/download/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"message",
+						"download",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

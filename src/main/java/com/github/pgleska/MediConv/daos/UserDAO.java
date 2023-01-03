@@ -10,5 +10,6 @@ import com.github.pgleska.MediConv.entities.User;
 
 public interface UserDAO extends JpaRepository<User, Integer> {
 	Optional<User> findByEmail(String email);
+	Optional<User> findByName(String name);
 	List<User> findByNameContainingAndRole(String name, Role role);
 }
